@@ -9,7 +9,6 @@ import { TelemetrySwitch } from "@/components/TelemetrySwitch";
 import { MaxChatTurnsSelector } from "@/components/MaxChatTurnsSelector";
 import { ThinkingBudgetSelector } from "@/components/ThinkingBudgetSelector";
 import { useSettings } from "@/hooks/useSettings";
-import { useAppVersion } from "@/hooks/useAppVersion";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "@tanstack/react-router";
@@ -20,12 +19,10 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { AutoFixProblemsSwitch } from "@/components/AutoFixProblemsSwitch";
 import { AutoUpdateSwitch } from "@/components/AutoUpdateSwitch";
-import { ReleaseChannelSelector } from "@/components/ReleaseChannelSelector";
 
 export default function SettingsPage() {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isResetting, setIsResetting] = useState(false);
-  const appVersion = useAppVersion();
   const { settings, updateSettings } = useSettings();
   const router = useRouter();
 
@@ -65,7 +62,7 @@ export default function SettingsPage() {
         </div>
 
         <div className="space-y-6">
-          <GeneralSettings appVersion={appVersion} />
+          <GeneralSettings />
           <WorkflowSettings />
           <AISettings />
 
@@ -201,7 +198,7 @@ export default function SettingsPage() {
   );
 }
 
-export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
+export function GeneralSettings() {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -244,20 +241,8 @@ export function GeneralSettings({ appVersion }: { appVersion: string | null }) {
       <div className="space-y-1 mt-4">
         <AutoUpdateSwitch />
         <div className="text-sm text-gray-500 dark:text-gray-400">
-          This will automatically update the app when new versions are
-          available.
+          Auto-update is currently disabled.
         </div>
-      </div>
-
-      <div className="mt-4">
-        <ReleaseChannelSelector />
-      </div>
-
-      <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-        <span className="mr-2 font-medium">App Version:</span>
-        <span className="bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded text-gray-800 dark:text-gray-200 font-mono">
-          {appVersion ? appVersion : "-"}
-        </span>
       </div>
     </div>
   );

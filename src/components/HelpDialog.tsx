@@ -367,11 +367,7 @@ Session ID: ${sessionId}
           <div className="flex flex-col space-y-2">
             <Button
               variant="outline"
-              onClick={() => {
-                IpcClient.getInstance().openExternalUrl(
-                  "https://www.serene.sh/docs",
-                );
-              }}
+              disabled
               className="w-full py-6 bg-(--background-lightest)"
             >
               <BookOpenIcon className="mr-2 h-5 w-5" /> Open Docs
@@ -385,7 +381,7 @@ Session ID: ${sessionId}
             <Button
               variant="outline"
               onClick={handleReportBug}
-              disabled={isLoading}
+              disabled
               className="w-full py-6 bg-(--background-lightest)"
             >
               <BugIcon className="mr-2 h-5 w-5" />{" "}
