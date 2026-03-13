@@ -1,0 +1,7 @@
+- paragraph: "[dump]"
+- paragraph: "Attachments:"
+- list:
+  - listitem: logo.png (image/png)
+- paragraph: "[[serene-dump-path=*]]"
+- button "Retry":
+  - img

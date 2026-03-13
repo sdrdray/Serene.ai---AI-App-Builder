@@ -1,0 +1,4 @@
+- paragraph: "[dump]"
+- paragraph: "[[serene-dump-path=*]]"
+- button "Retry":
+  - img
